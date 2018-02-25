@@ -1,0 +1,18 @@
+body {
+    background-color: white;
+}
+
+.App {
+    display: inline-flex;
+    flex-direction: column;
+    color: #565656;
+    min-width: 250px;
+    transform: translate(-50%, 0%);
+    position: absolute;
+    top: 20%;
+    left: 50%;
+}
+
+.warn {
+    font-size: 10pt;
+}

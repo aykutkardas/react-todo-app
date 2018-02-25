@@ -1,0 +1,29 @@
+.Todo {
+    padding: 0px;
+    margin-top: 70px;
+}
+
+.todo-item {
+    list-style: none;
+    padding: 10px;
+    font-size: 10pt;
+    margin-bottom: 5px;
+    min-height: 20px;
+    border-bottom: 1px dotted  #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.item-delete {
+    font-weight: bold;
+    border: 2px solid #565656;
+    min-width: 15px;
+    min-height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+}
