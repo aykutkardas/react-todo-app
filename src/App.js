@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 
-import './App.css';
+// Stylesheets
+import './css/App.css';
 
-import TodoItem from './TodoItem';
-import AddItem from './AddItem';
+// Components
+import TodoItem from './components/TodoItem';
+import AddItem from './components/AddItem';
 
 class App extends Component {
 
   constructor(){
     super();
     this.state = {
-      todos: []
+      todos: ['Learn to React', 'Learn to React Native'].sort()
     }
   }
 
   render() {
 
-    var todos = this.state.todos.map((item, index)=> {
+    var todos = this.state.todos.map((item, index) => {
       return <TodoItem item={item} key={index} onDelete={this.onDelete} />;
     });
 
@@ -27,7 +29,7 @@ class App extends Component {
         <ul className="Todo">
           {todos.length > 0 ? todos : <p className="warn">to do list is empty...</p>}
         </ul>
-
+        
       </div>
     );
   }

@@ -1,6 +1,7 @@
 {
   "name": "react-todo-app",
-  "version": "0.1.0",
+  "version": "0.1.2",
+  "author": "Aykut Kardaş",
   "private": true,
   "dependencies": {
     "react": "^16.2.0",
