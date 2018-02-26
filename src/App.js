@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+// Libraries
+import LocalDB from 'local-db'
+
 // Stylesheets
 import './css/App.css';
 
@@ -11,15 +14,18 @@ class App extends Component {
 
   constructor(){
     super();
+
+    this.todoTable = new LocalDB('todos');
+
     this.state = {
-      todos: ['Learn to React', 'Learn to React Native'].sort()
+      todos: this.todoTable.read()
     }
   }
 
   render() {
 
     var todos = this.state.todos.map((item, index) => {
-      return <TodoItem item={item} key={index} onDelete={this.onDelete} />;
+      return <TodoItem item={item.todo} key={index} onDelete={this.onDelete} />;
     });
 
     return (
@@ -37,24 +43,20 @@ class App extends Component {
 
   onAdd = (item) => {
 
-    var todos = this.state.todos;
-    todos.push(item);
+    this.todoTable.insert({"todo": item});
 
     this.setState({
-      todos
+      todos: this.todoTable.read()
     });
 
   }
 
   onDelete = (item) => {
 
-    var todos = this.state.todos;
-    var itemKey = todos.indexOf(item);
-
-    if(itemKey !== -1) todos.splice(itemKey, 1);
+    this.todoTable.delete({"todo":item});
 
     this.setState({
-      todos
+      todos: this.todoTable.read()
     });
     
   }
