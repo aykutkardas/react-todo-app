@@ -3,3 +3,21 @@ body {
   padding: 0;
   font-family: 'Roboto';
 }
+
+.App {
+  display: inline-flex;
+  flex-direction: column;
+  color: #565656;
+  min-width: 250px;
+  transform: translate(-50%, 0%);
+  position: absolute;
+  top: 5%;
+  left: 50%;
+}
+
+.warn {
+  font-size: 10pt;
+  font-style: italic;
+  color: #aaa;
+  text-align: center;
+}

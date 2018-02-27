@@ -3,12 +3,9 @@ import React, { Component } from 'react';
 // Libraries
 import LocalDB from 'local-db'
 
-// Stylesheets
-import './css/App.css';
-
 // Components
-import TodoItem from './components/TodoItem';
-import AddItem from './components/AddItem';
+import TodoItem from './components/todo-item/TodoItem';
+import AddItem from './components/add-item/AddItem';
 
 class App extends Component {
 
@@ -25,7 +22,7 @@ class App extends Component {
   render() {
 
     var todos = this.state.todos.map((item, index) => {
-      return <TodoItem item={item.todo} key={index} onDelete={this.onDelete} />;
+      return <TodoItem item={item.todo} isDone={item.isDone} key={index} onDelete={this.onDelete} onDone={this.onDone} />;
     });
 
     return (
@@ -49,6 +46,17 @@ class App extends Component {
       todos: this.todoTable.read()
     });
 
+  }
+
+  onDone = (item) => {
+
+    var todo = this.todoTable.read({"todo": item});
+    var isDone = !todo[0].isDone;
+    this.todoTable.update({"todo": item}, {isDone: isDone});
+
+    this.setState({
+      todos: this.todoTable.read()
+    })
   }
 
   onDelete = (item) => {

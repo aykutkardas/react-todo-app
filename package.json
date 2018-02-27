@@ -4,8 +4,10 @@
   "author": "Aykut Kardaş",
   "private": true,
   "dependencies": {
+    "local-db": "^2.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-icons-kit": "^1.0.7",
     "react-scripts": "1.1.1"
   },
   "scripts": {

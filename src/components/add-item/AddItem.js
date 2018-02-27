@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Stylesheets
-import '../css/AddItem.css';
+import './AddItem.css';
 
 class AddItem extends Component {
 

@@ -1,18 +1,18 @@
-.Footer {
+.Header {
     display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
     left: 0px;
-    bottom: 0px;
+    top: 0px;
     width: 100%;
-    height: 50px;
-    background: linear-gradient(rgba(0,0,0,0), rgb(255, 231, 180));
-    color: rgba(0,0,0,0.4);
+    height: 150px;
+    background: linear-gradient(rgb(255, 231, 180), rgba(0, 0, 0, 0));
+    color: rgba(0, 0, 0, 0.4);
     pointer-events: none;
 }
 
-.Footer-item {
+.Header-item {
     display: flex;
     margin: 5px;
     font-weight: bold;
