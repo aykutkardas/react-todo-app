@@ -12,8 +12,8 @@ class TodoItem extends Component {
         super(props);
         this.state = {
             confirm: false
-        }
-        
+        };
+
     }
 
     render(){
@@ -45,13 +45,13 @@ class TodoItem extends Component {
     }
 
     handleDone = () => {
-        this.props.onDone(this.props.item);
+        this.props.onDone(this.props.id);
     }
 
     handleDelete = (answer) => {
 
         if(answer) {
-            this.props.onDelete(this.props.item);
+            this.props.onDelete(this.props.id);
         }
 
         this.setState({

@@ -22,7 +22,7 @@ class App extends Component {
   render() {
 
     var todos = this.state.todos.map((item, index) => {
-      return <TodoItem item={item.todo} isDone={item.isDone} key={index} onDelete={this.onDelete} onDone={this.onDone} />;
+      return <TodoItem id={item.id} item={item.todo} isDone={item.isDone} key={index} onDelete={this.onDelete} onDone={this.onDone} />;
     });
 
     return (
@@ -48,20 +48,20 @@ class App extends Component {
 
   }
 
-  onDone = (item) => {
+  onDone = (id) => {
 
-    var todo = this.todoTable.read({"todo": item});
+    var todo = this.todoTable.read({"id": id});
     var isDone = !todo[0].isDone;
-    this.todoTable.update({"todo": item}, {isDone: isDone});
+    this.todoTable.update({"id": id}, {isDone: isDone});
 
     this.setState({
       todos: this.todoTable.read()
     })
   }
 
-  onDelete = (item) => {
+  onDelete = (id) => {
 
-    this.todoTable.delete({"todo":item});
+    this.todoTable.delete({"id":id});
 
     this.setState({
       todos: this.todoTable.read()
