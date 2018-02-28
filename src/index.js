@@ -1,11 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+/*eslint-disable no-unused-vars*/
+import React from 'react'
+/*eslint-enable no-unused-vars*/
 
-import './css/index.css';
+import ReactDOM from 'react-dom'
+import App from './App'
 
-import registerServiceWorker from './registerServiceWorker';
+import './css/index.css'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import registerServiceWorker from './registerServiceWorker'
 
-registerServiceWorker();
+ReactDOM.render(<App />, document.getElementById('root'))
+
+registerServiceWorker()
