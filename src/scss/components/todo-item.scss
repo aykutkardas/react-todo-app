@@ -1,0 +1,103 @@
+.Todo {
+    padding: 0;
+    margin-top: 70px;
+
+    &-item {
+        list-style: none;
+        padding: 10px;
+        font-size: 10pt;
+        margin-bottom: 5px;
+        min-height: 20px;
+        border-bottom: 1px dotted #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: bold;
+        position: relative;
+        overflow: hidden;
+        flex-shrink: 0;
+        max-width: 100%;
+        text-transform: capitalize;
+
+        &-name {
+            flex-grow: 0;
+            width: 80%;
+        }
+
+        &-delete {
+            color: #919191;
+            &:hover {
+                color: #ccc;
+            }
+        }
+
+        &-done {
+            color: inherit;
+            &:hover {
+                color: #ccc;
+            }
+        }
+
+        &-delete,
+        &-done {
+            font-weight: bold;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            margin-left: 16px;
+            transition: .1s;
+            padding: 2px;
+        }
+
+        
+    }
+
+    &-delete-confirm {
+        position: absolute;
+        right: 0px;
+        height: 100%;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+
+        &-yes {
+            color: tomato;
+        }
+
+        &-no {
+            color: #919191;
+        }
+
+        &-yes,
+        &-no {
+            font-weight: bold;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            margin-left: 16px;
+            transition: .1s;
+            padding: 2px;
+        }
+    }
+
+    .isDoneCheck {
+        color: seagreen;
+    }
+
+    .isDone {
+        color: #919191;
+        text-decoration: line-through;
+        font-weight: normal;
+    }
+
+}
