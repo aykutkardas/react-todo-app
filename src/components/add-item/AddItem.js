@@ -1,26 +1,42 @@
 import React, { Component } from 'react';
 
-// Stylesheets
-import './AddItem.css';
-
 class AddItem extends Component {
+
+    constructor(props){
+        super(props);
+
+        this.state = {
+            newItem: '',
+            inputEl: false
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+    }
 
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <input autoFocus="true" className="new-item" type="text" ref="newItem" placeholder="+  New item" />
+                <input autoFocus="true" className="new-item" type="text" onChange={this.handleChange} placeholder="+  New item" />
             </form>
         );
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            newItem: e.target.value,
+            inputEl: e.target
+        });
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
 
-        var newItem = this.refs.newItem.value;
+        let newItem = this.state.newItem;
 
         if(newItem.trim() !== "") {
             this.props.onAdd(newItem);
-            this.refs.newItem.value = "";
+            let inputEl = this.state.inputEl;
+            inputEl.value = "";
         }
     }
 

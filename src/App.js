@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import LocalDB from 'local-db'
 
 // Components
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 import TodoItem from './components/todo-item/TodoItem';
 import AddItem from './components/add-item/AddItem';
 
@@ -27,12 +29,17 @@ class App extends Component {
 
     return (
       <div className="App">
-        <AddItem onAdd={this.onAdd} />
-
-        <ul className="Todo">
-          {todos.length > 0 ? todos : <p className="warn">to do list is empty...</p>}
-        </ul>
+        <Header />
         
+        <div className="App-Main">
+          <AddItem onAdd={this.onAdd} />
+
+          <ul className="Todo">
+            {todos.length > 0 ? todos : <p className="warn">to do list is empty...</p>}
+          </ul>
+        </div>
+        
+        <Footer />
       </div>
     );
   }
