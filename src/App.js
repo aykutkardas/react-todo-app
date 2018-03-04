@@ -6,17 +6,14 @@ import axios from 'axios'
 // Components
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
-import TodoItem from './components/todo-item/TodoItem'
 import AddItem from './components/add-item/AddItem'
+import TodoList from './components/todo-list/TodoList'
 
 class App extends React.Component {
 
 	constructor(){
 		super()
-		this.state = {
-			todos: []
-		}
-
+		this.state = { todos: [] }
 		this.apiUrl = 'http://5a9bc184c8b35c0012b44ab0.mockapi.io/todos/'
 	}
 
@@ -28,19 +25,15 @@ class App extends React.Component {
 	}	
 
 	render() {
-		var todos = this.state.todos.map((item, index) => {
-			return <TodoItem id={item.id} item={item.todo} isDone={item.isDone} key={index} onDelete={this.onDelete} onDone={this.onDone} />
-		})
-
 		return (
 			<div className="App">
 				<Header />
 
 				<div className="App-Main">
+
 					<AddItem onAdd={this.onAdd} />
-					<ul className="Todo">
-						{todos.length > 0 ? todos : <p className="warn">to do list is empty...</p>}
-					</ul>
+					<TodoList onDone={this.onDone} onDelete={this.onDelete} todos={this.state.todos} />
+
 				</div>
 
 				<Footer />
@@ -84,18 +77,14 @@ class App extends React.Component {
 	}
 
 	onDelete = (id) => {
-
-		const index = this.state.todos.map(e=>{ return e.id }).indexOf(id)
-
-		
 		axios.delete(this.apiUrl + id)
 			.then(()=>{
+				const index = this.state.todos.map(e => { return e.id }).indexOf(id)
 				this.state.todos.splice(index, 1)
 				this.setState({
 					todos: this.state.todos
 				})
 			})
-
 	}
 
   
