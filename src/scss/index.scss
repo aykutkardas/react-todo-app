@@ -1,3 +1,7 @@
+// Helper
+@import './helper/animate.scss';
+@import './helper/normalize.scss';
+
 // Global
 @import './global/global.scss';
 @import './global/header.scss';
@@ -7,6 +11,3 @@
 @import './components/app.scss';
 @import './components/add-item.scss';
 @import './components/todo-item.scss';
-
-// Helper
-@import './helper/animate.scss';
