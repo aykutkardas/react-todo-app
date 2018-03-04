@@ -29,7 +29,7 @@ class AddItem extends React.Component {
 		let newItem = this.state.newItem
 
 		if(newItem.trim() !== '') {
-			this.props.onAdd(newItem)
+			this.props.onAdd({todo: newItem})
 			this.setState({newItem: ''})
 		}
 	}

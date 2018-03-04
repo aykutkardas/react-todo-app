@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Libraries
-import LocalDB from 'local-db'
+import axios from 'axios'
 
 // Components
 import Header from './components/header/Header'
@@ -13,11 +13,19 @@ class App extends React.Component {
 
 	constructor(){
 		super()
-		this.todoTable = new LocalDB('todos')
 		this.state = {
-			todos: this.todoTable.read()
+			todos: []
 		}
+
+		this.apiUrl = 'http://5a9bc184c8b35c0012b44ab0.mockapi.io/todos/'
 	}
+
+	componentDidMount() {
+		axios.get(this.apiUrl)
+			.then((res) => {
+				this.setState({ todos: res.data })
+			})
+	}	
 
 	render() {
 		var todos = this.state.todos.map((item, index) => {
@@ -42,30 +50,51 @@ class App extends React.Component {
 
 
 	onAdd = (item) => {
-
-		this.todoTable.insert({'todo': item})
-		this.setState({
-			todos: this.todoTable.read()
-		})
+		axios.post(this.apiUrl, item)
+			.then((res) => {
+				this.setState(
+					(prevState) => {
+						prevState.todos.push(res.data)
+						return { todos: prevState.todos }
+					}
+				)
+			})
 
 	}
 
 	onDone = (id) => {
 
-		var todo = this.todoTable.read({'id': id})
-		var isDone = !todo[0].isDone
-		this.todoTable.update({'id': id}, {isDone: isDone})
-		this.setState({
-			todos: this.todoTable.read()
-		})
+		let updateData
+
+		for(let i = 0; i < this.state.todos.length; i++) {
+			const todo = this.state.todos[i]
+			if(todo.id === id) {
+				todo.isDone = !todo.isDone
+				updateData = {isDone: todo.isDone}
+			} 
+		}
+
+		axios.put(this.apiUrl + id, updateData)
+			.then(()=>{
+				this.setState({
+					todos: this.state.todos
+				})
+			})
+		
 	}
 
 	onDelete = (id) => {
 
-		this.todoTable.delete({'id':id})
-		this.setState({
-			todos: this.todoTable.read()
-		})
+		const index = this.state.todos.map(e=>{ return e.id }).indexOf(id)
+
+		
+		axios.delete(this.apiUrl + id)
+			.then(()=>{
+				this.state.todos.splice(index, 1)
+				this.setState({
+					todos: this.state.todos
+				})
+			})
 
 	}
 
